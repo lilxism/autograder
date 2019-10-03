@@ -22,7 +22,7 @@ public class FolderUnzipper {
             System.out.println(zipFile.getName());
             //We will unzip files in this folder
             String uncompressedFolder = file.getParent() + file.separator + stripExtension(file.getName());
-            uncompressedFolderPath = "" + fileSystem.getPath(uncompressedFolder);
+            uncompressedFolderPath = fileSystem.getPath(uncompressedFolder).toString();
 
             //Check if uncompressedFolder already exists. If not, create it
             if(Files.notExists(fileSystem.getPath(uncompressedFolder))) {
