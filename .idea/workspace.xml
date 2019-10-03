@@ -4,7 +4,6 @@
     <list default="true" id="033b1f2c-81bc-4709-a7e8-68672ff15273" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/!:2" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,6 +75,21 @@
       <workItem from="1568898354898" duration="197000" />
       <workItem from="1568919439311" duration="1731000" />
     </task>
+    <task id="LOCAL-00001">
+      <created>1570109592295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570109592295</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Trying to fix stuff">
+      <created>1570109805744</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570109805744</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -100,6 +114,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Trying to fix stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix stuff" />
   </component>
   <component name="masterDetails">
     <states>
