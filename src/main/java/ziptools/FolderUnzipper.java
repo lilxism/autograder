@@ -10,8 +10,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class FolderUnzipper {
-    public static void unzipFolder(String path){
-
+    public static String unzipFolder(String path){
+        String uncompressedFolderPath = "";
         //Attempts to open the folder
         try(ZipFile zipFile = new ZipFile(path)){
             File file = new File(path);
@@ -22,6 +22,7 @@ public class FolderUnzipper {
             System.out.println(zipFile.getName());
             //We will unzip files in this folder
             String uncompressedFolder = file.getParent() + file.separator + stripExtension(file.getName());
+            uncompressedFolderPath = "" + fileSystem.getPath(uncompressedFolder);
 
             //Check if uncompressedFolder already exists. If not, create it
             if(Files.notExists(fileSystem.getPath(uncompressedFolder))) {
@@ -60,6 +61,7 @@ public class FolderUnzipper {
         catch(IOException e){
             e.printStackTrace();
         }
+        return uncompressedFolderPath;
     }
 
     //Remove file extension from a string

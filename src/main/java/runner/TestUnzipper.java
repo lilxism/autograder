@@ -19,7 +19,7 @@ public class TestUnzipper {
 //        while(true) {
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            unzipFolder(chooser.getSelectedFile().getAbsolutePath());
+            String folderPath = unzipFolder(chooser.getSelectedFile().getAbsolutePath());
 //            break;
         }
         System.exit(0);
