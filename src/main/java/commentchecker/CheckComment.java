@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 public class CheckComment {
 
     //temporary read file method
-    public static ArrayList<String> readActivity(String filename,String regex) {
+    public static ArrayList<String> readActivity(String filename, String regex) {
+        Pattern pattern = Pattern.compile(regex);
         ArrayList<String> buf = new ArrayList<>();
         String line;
         try {
@@ -18,7 +19,6 @@ public class CheckComment {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             while((line=bufferedReader.readLine())!=null) {
-                Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.find())
                 {
