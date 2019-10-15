@@ -9,27 +9,26 @@ import java.util.List;
 
 public class FormatChecker {
 
-    public static class SyntaxSpec {
-        public String regex;
-        public String name;
-        public SyntaxSpec(String regex, String name) {
+    private static class SyntaxSpec {
+        String regex;
+        String name;
+        SyntaxSpec(String regex, String name) {
             this.regex = regex;
             this.name = name;
         }
     }
 
     public static void main(String[] args) {
-        //First check if they have commented on number of questions
         String filePath="python_labs\\chual2242_lab04.py";
         List<SyntaxSpec> specs = Arrays.asList(
                 new SyntaxSpec("def\\s+[a-zA-Z_-]*[A-Z-]+[a-zA-Z_-]*", "Improper function name"),
-                new SyntaxSpec("(?:==|!=)\\s*(?:True|False)", "Redundant comparison"),
-                new SyntaxSpec("if\\s+\\w+\\s*=\\s*\\w+", "Assignment within conditional")
+                new SyntaxSpec("(?:==|!=)\\s*(?:True|False)", "Redundant comparison"), // (ex. == True)
+                new SyntaxSpec("if\\s+\\w+\\s*=\\s*\\w+", "Assignment within conditional") // if a = b
         );
         List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(filePath));
-            List<Integer> matches = new ArrayList<Integer>();
+            List<Integer> matches = new ArrayList<>();
             for (int i = 0; i < lines.size(); i++) {
                 for (SyntaxSpec spec : specs) {
                     if (lines.get(i).matches(spec.regex)) {
