@@ -5,6 +5,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.Scanner;
 
+import static ziptools.FolderUnzipper.retrieveFileNames;
 import static ziptools.FolderUnzipper.unzipFolder;
 
 public class TestUnzipper {
@@ -18,9 +19,16 @@ public class TestUnzipper {
         chooser.setAcceptAllFileFilterUsed(false);
 //        while(true) {
         int returnVal = chooser.showOpenDialog(null);
+        String folderPath = "";
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            unzipFolder(chooser.getSelectedFile().getAbsolutePath());
+            folderPath = unzipFolder(chooser.getSelectedFile().getAbsolutePath());
+            System.out.println("Uncompressed folder path: " + folderPath);
 //            break;
+        }
+        String[] fileNames = retrieveFileNames(folderPath);
+        System.out.println("Files in folder: ");
+        for(int i=0; i<fileNames.length; i++){
+            System.out.println("File " + i + ": " + fileNames[i]);
         }
         System.exit(0);
 //        }

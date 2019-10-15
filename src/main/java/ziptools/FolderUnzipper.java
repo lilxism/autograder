@@ -5,13 +5,14 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class FolderUnzipper {
-    public static void unzipFolder(String path){
-
+    public static String unzipFolder(String path){
+        String uncompressedFolderPath = "";
         //Attempts to open the folder
         try(ZipFile zipFile = new ZipFile(path)){
             File file = new File(path);
@@ -22,6 +23,7 @@ public class FolderUnzipper {
             System.out.println(zipFile.getName());
             //We will unzip files in this folder
             String uncompressedFolder = file.getParent() + file.separator + stripExtension(file.getName());
+            uncompressedFolderPath = fileSystem.getPath(uncompressedFolder).toString();
 
             //Check if uncompressedFolder already exists. If not, create it
             if(Files.notExists(fileSystem.getPath(uncompressedFolder))) {
@@ -60,6 +62,21 @@ public class FolderUnzipper {
         catch(IOException e){
             e.printStackTrace();
         }
+        return uncompressedFolderPath;
+    }
+
+    //Loops through the files in the folder and puts the names in a String array and returns it
+    public static String[] retrieveFileNames(String folderPath){
+        File folder = new File(folderPath);
+        File[] fileList = folder.listFiles();
+        String[] fileNames;
+        fileNames = new String[fileList.length];
+
+        for(int i=0; i<fileList.length; i++){
+            fileNames[i] = fileList[i].getName();
+        }
+
+        return fileNames;
     }
 
     //Remove file extension from a string
