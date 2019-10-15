@@ -66,13 +66,13 @@ public class CheckComment {
 
     public static void main(String[]args){
         //First check if they have commented on number of questions
-        String filename="C:\\Users\\USER\\IdeaProjects\\autograder\\python_labs\\chual2242_lab04.py";
+        String filename="python_labs\\chual2242_lab04.py";
         String regex="^#.+"; //to get string that begin with #
         ArrayList<String> activityStr=readActivity(filename,regex);
         int countActivity=0; //to count on Activity number
-        for(int i=0;i<activityStr.size();i++){
-            if(activityStr.get(i).toLowerCase().startsWith("#activity")||activityStr.get(i).startsWith("# activity")){
-                countActivity+=1;
+        for (String s : activityStr) {
+            if (s.toLowerCase().startsWith("#activity") || s.startsWith("# activity")) {
+                countActivity += 1;
             }
         }
         System.out.println(countActivity);
