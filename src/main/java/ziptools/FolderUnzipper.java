@@ -5,6 +5,7 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -62,6 +63,20 @@ public class FolderUnzipper {
             e.printStackTrace();
         }
         return uncompressedFolderPath;
+    }
+
+    //Loops through the files in the folder and puts the names in a String array and returns it
+    public static String[] retrieveFileNames(String folderPath){
+        File folder = new File(folderPath);
+        File[] fileList = folder.listFiles();
+        String[] fileNames;
+        fileNames = new String[fileList.length];
+
+        for(int i=0; i<fileList.length; i++){
+            fileNames[i] = fileList[i].getName();
+        }
+
+        return fileNames;
     }
 
     //Remove file extension from a string
