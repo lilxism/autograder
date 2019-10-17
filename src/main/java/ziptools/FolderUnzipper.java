@@ -79,6 +79,20 @@ public class FolderUnzipper {
         return fileNames;
     }
 
+    //Loops through the files in the folder and puts the paths in a String array and returns it
+    public static String[] retrieveFilePaths(String folderPath){
+        File folder = new File(folderPath);
+        File[] fileList = folder.listFiles();
+        String[] filePaths;
+        filePaths = new String[fileList.length];
+
+        for(int i=0; i<fileList.length; i++){
+            filePaths[i] = fileList[i].getAbsolutePath();
+        }
+
+        return filePaths;
+    }
+
     //Remove file extension from a string
     private static String stripExtension(final String s){
         return s != null && s.lastIndexOf(".") > 0 ? s.substring(0, s.lastIndexOf(".")) : s;
