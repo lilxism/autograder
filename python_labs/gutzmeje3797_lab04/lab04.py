@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # https://www.onlinegdb.com/online_python_compiler
 # 
 #
@@ -160,3 +161,6 @@ main()
 
 
 
+=======
+import sys
+>>>>>>> abb79c1bbcf7d3662464dc3fed5a1161574f0c72
