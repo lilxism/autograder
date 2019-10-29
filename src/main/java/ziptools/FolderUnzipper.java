@@ -79,8 +79,8 @@ public class FolderUnzipper {
         return fileNames;
     }
 
-    //Loops through the files in the folder and puts the paths in a String array and returns it
-    public static String[] retrieveFilePaths(String folderPath){
+    //Loops through the files in the folder and puts the absolute paths in a String array and returns it
+    public static String[] retrieveAbsoluteFilePaths(String folderPath){
         File folder = new File(folderPath);
         File[] fileList = folder.listFiles();
         String[] filePaths;
@@ -88,6 +88,20 @@ public class FolderUnzipper {
 
         for(int i=0; i<fileList.length; i++){
             filePaths[i] = fileList[i].getAbsolutePath();
+        }
+
+        return filePaths;
+    }
+
+    //Loops through the files in the folder and puts the relative paths in a String array and returns it
+    public static String[] retrieveRelativeFilePaths(String folderPath){
+        File folder = new File(folderPath);
+        File[] fileList = folder.listFiles();
+        String[] filePaths;
+        filePaths = new String[fileList.length];
+
+        for(int i=0; i<fileList.length; i++){
+            filePaths[i] = fileList[i].getPath();
         }
 
         return filePaths;

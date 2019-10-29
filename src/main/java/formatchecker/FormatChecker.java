@@ -9,10 +9,10 @@ import java.util.List;
 
 public class FormatChecker {
 
-    private static class SyntaxSpec {
-        String regex;
-        String name;
-        SyntaxSpec(String regex, String name) {
+    public static class SyntaxSpec {
+        public String regex;
+        public String name;
+        public SyntaxSpec(String regex, String name) {
             this.regex = regex;
             this.name = name;
         }
