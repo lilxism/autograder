@@ -3,17 +3,24 @@ package runner;
 import configsettings.ConfigSettings;
 import javax.swing.*;
 //import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static checkers.Checker.*;
+import static compareoutput.compareOutput.compareOutput;
 import static javax.swing.JFileChooser.FILES_AND_DIRECTORIES;
 import static ziptools.FolderUnzipper.*;
 
 public class TestUnzipper {
     private static Scanner console = new Scanner(System.in);
-    public static void main(String[] args){
+
+    public static void main(String[] args) throws IOException {
+
+        File file = new File("./compare.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        ConfigSettings test = new ConfigSettings("settings.cfg");
+
         /*Create and set up file chooser for selecting zip file*/
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(FILES_AND_DIRECTORIES);
@@ -77,7 +84,37 @@ public class TestUnzipper {
             }
 
             System.out.println("Python file '" + fileNames[fileCount] + "':");
-            ConfigSettings test = new ConfigSettings("settings.cfg");
+
+            String python = filePath;
+            String str;
+
+            if(test.getSetting("CHECK_INPUT").compareTo("TRUE")==0) {
+
+                System.out.print("Enter answer file for script: ");
+                String answers = console.next();
+                String command = "python " + python + " < " + answers;
+                System.out.println(command);
+                Process process = Runtime.getRuntime().exec(command);
+                BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                while((str = in.readLine()) != null) {
+                    System.out.println(str);
+                    writer.write(str);
+                }
+                writer.close();
+            } else {
+                String command = "python " + python;
+                System.out.println(command);
+                Process process = Runtime.getRuntime().exec(command);
+                BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                while((str = in.readLine()) != null) {
+                    System.out.println(str);
+                    writer.write(str + "\n");
+                }
+                writer.close();
+            }
+
+            compareOutput("./compare.txt", "./answer_lab6.txt");
+
             String outfile= removeExtension(fileNames[fileCount]) + "_check.txt";
             ArrayList<String> strs=new ArrayList<String>();
 
