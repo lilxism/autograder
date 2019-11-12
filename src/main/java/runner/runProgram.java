@@ -4,7 +4,6 @@ import java.io.*;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
-
 public class runProgram {
     public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -21,24 +20,29 @@ public class runProgram {
         System.out.print("Does this script require user input? (y/n) ");
         String haveInput = scanner.next();
 
-        if(haveInput.toLowerCase().startsWith("y")) {
+        // Read a file with contents to be piped into the python script
+        if (haveInput.toLowerCase().startsWith("y")) {
             System.out.print("Enter answer file for script: ");
             String answers = scanner.next();
             String command = "python " + python + " < " + answers;
             System.out.println(command);
+            // Run the python script
             Process process = Runtime.getRuntime().exec(command);
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            // Write results of script to console
             while((str = in.readLine()) != null) {
                 System.out.println(str);
                 writer.write(str);
             }
             writer.close();
         } else {
+            // Run the script without piping anything in
             String command = "python " + python;
             System.out.println(command);
             Process process = Runtime.getRuntime().exec(command);
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            while((str = in.readLine()) != null) {
+            // Write results of script to console
+            while ((str = in.readLine()) != null) {
                 System.out.println(str);
                 writer.write(str + "\n");
             }
