@@ -22,7 +22,7 @@ public class FolderUnzipper {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             System.out.println(zipFile.getName());
             //We will unzip files in this folder
-            String uncompressedFolder = file.getParent() + file.separator + stripExtension(file.getName());
+            String uncompressedFolder = file.getParent() + file.separator + removeExtension(file.getName());
             uncompressedFolderPath = fileSystem.getPath(uncompressedFolder).toString();
 
             //Check if uncompressedFolder already exists. If not, create it
@@ -70,12 +70,18 @@ public class FolderUnzipper {
         File folder = new File(folderPath);
         File[] fileList = folder.listFiles();
         String[] fileNames;
-        fileNames = new String[fileList.length];
 
-        for(int i=0; i<fileList.length; i++){
-            fileNames[i] = fileList[i].getName();
+        if(fileList != null) {
+            fileNames = new String[fileList.length];
+
+            for (int i = 0; i < fileList.length; i++) {
+                fileNames[i] = fileList[i].getName();
+            }
         }
-
+        else{
+            fileNames = new String[1];
+            fileNames[0] = folderPath;
+        }
         return fileNames;
     }
 
@@ -84,12 +90,18 @@ public class FolderUnzipper {
         File folder = new File(folderPath);
         File[] fileList = folder.listFiles();
         String[] filePaths;
-        filePaths = new String[fileList.length];
 
-        for(int i=0; i<fileList.length; i++){
-            filePaths[i] = fileList[i].getAbsolutePath();
+        if(fileList != null) {
+            filePaths = new String[fileList.length];
+
+            for (int i = 0; i < fileList.length; i++) {
+                filePaths[i] = fileList[i].getAbsolutePath();
+            }
         }
-
+        else{
+            filePaths = new String[1];
+            filePaths[0] = folder.getPath();
+        }
         return filePaths;
     }
 
@@ -98,17 +110,41 @@ public class FolderUnzipper {
         File folder = new File(folderPath);
         File[] fileList = folder.listFiles();
         String[] filePaths;
-        filePaths = new String[fileList.length];
 
-        for(int i=0; i<fileList.length; i++){
-            filePaths[i] = fileList[i].getPath();
+        if (fileList != null) {
+            filePaths = new String[fileList.length];
+
+            for (int i = 0; i < fileList.length; i++) {
+                filePaths[i] = fileList[i].getPath();
+            }
+        }
+        else{
+            filePaths = new String[1];
+            filePaths[0] = folder.getPath();
         }
 
         return filePaths;
     }
 
     //Remove file extension from a string
-    private static String stripExtension(final String s){
-        return s != null && s.lastIndexOf(".") > 0 ? s.substring(0, s.lastIndexOf(".")) : s;
+    public static String removeExtension(String s) {
+
+        String separator = System.getProperty("file.separator");
+        String filename;
+
+        // Remove the path upto the filename.
+        int lastSeparatorIndex = s.lastIndexOf(separator);
+        if (lastSeparatorIndex == -1) {
+            filename = s;
+        } else {
+            filename = s.substring(lastSeparatorIndex + 1);
+        }
+
+        // Remove the extension.
+        int extensionIndex = filename.lastIndexOf(".");
+        if (extensionIndex == -1)
+            return filename;
+
+        return filename.substring(0, extensionIndex);
     }
 }

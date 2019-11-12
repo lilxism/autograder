@@ -1,14 +1,14 @@
 #Lab 6 : recursion
 
 def main():
-	#Activity0 test
+
 	words1=["cat","dog","fish","giraffe","horse"]
 	words2=["cat","duck","dog","hippo"]
 	print(isAlpha(words1))
 	print(isAlpha(words2))
 	print("")
 	
-	#Activity1 test
+
 	writeNums(9)
 	print("")
 	writeNums(5)
@@ -18,7 +18,7 @@ def main():
 	writeNums(0)
 	print("")
 	
-	#Activity2 test
+
 	repeat('hello',3)
 	print("")
 	repeat('okay',1)
@@ -26,14 +26,14 @@ def main():
 	repeat('cats',4)
 	print("\n")
 	
-	#Activity3 test
+
 	print(indexOfFirst("Barack Obama","bam"))
 	print(indexOfFirst("spaghetti","no"))
 	print(indexOfFirst("noodle","noo"))
 	print(indexOfFirst("no","noodle"))
 	print("")
 	
-	#Activity4 test
+
 	print(multiplyEvens(4))
 	print(multiplyEvens(5))
 	print(multiplyEvens(9))
