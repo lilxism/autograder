@@ -1,7 +1,6 @@
 package resultAnalysis;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,11 +10,12 @@ public class resultAnalysis {
 
     private static List result;
     private static int amountCalled = 0;
+    private static List<String> files;
 
     public static void main(String[] args) {
 
         //create list of all the files to analyze
-        List<String> files = new ArrayList<>();
+        files = new ArrayList<>();
         String pathTo = "src/main/java/resultAnalysis/";
         files.add(pathTo + "test1.txt");
         files.add(pathTo + "test2.txt");
@@ -61,8 +61,19 @@ public class resultAnalysis {
 
     public static void displayResults(List results) {
 
-        for (int i = 0; i < results.size(); i++) {
-            System.out.println("Amount wrong for question " + i + ": " + result.get(i) + " ==> " + ((int) result.get(i) * 100) / amountCalled + "%");
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream("filename.txt"), "utf-8"))) {
+            for (int i = 0; i < results.size(); i++) {
+                writer.write("Amount wrong for question " + i + ": " + result.get(i) + " ==> " + ((int) result.get(i) * 100) / amountCalled + "%" + "\n");
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
     }
 }
