@@ -20,7 +20,7 @@ def main():
 
 	# Activity 1a
 	pres = inputList[0]
-	print("Who was the youngest U.S. president? ")
+	print("Who was the youngest U.S. president?")
 	print(">",pres)
 	pres = pres.upper()
 	isYoungest(pres)
@@ -28,7 +28,7 @@ def main():
 	
 	# Activity 1b	
 	y = int(inputList[1])
-	print("Enter your year: ")
+	print("Enter your year:")
 	print(">",y)
 	print(determineRank(y))
 	print()

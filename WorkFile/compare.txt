@@ -4,12 +4,12 @@
 
 [1, 2, 3, 4, 5, 6]
 
-Who was the youngest U.S. president? 
+Who was the youngest U.S. president?
 > JFK
 Incorrect. He became president at age of 43. However,
 he was the youngest person elected president.
 
-Enter your year: 
+Enter your year:
 > 1
 Freshman
 

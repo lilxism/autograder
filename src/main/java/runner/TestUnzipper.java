@@ -111,8 +111,8 @@ public class TestUnzipper {
 
             String outfile= removeExtension(fileNames[fileCount]) + "_check.txt";
 
-           // ArrayList<String> strs=new ArrayList<String>();
-/*
+           ArrayList<String> strs=new ArrayList<String>();
+
             //Checking format for file
             if(test.getSetting("CHECK_FORMAT").compareTo("TRUE")==0){
                 System.out.println("    Checking format");
@@ -143,7 +143,6 @@ public class TestUnzipper {
             }
             System.out.println();
             fileCount++;
-            */
         }
 
         System.exit(0);

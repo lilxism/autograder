@@ -2,12 +2,10 @@ No			Student's answer			Instructor's answer			Comment
 1			[1, 2, 3, 4, 5]			[1,2,3,4,5]			Wrong
 2			[1, 3, 5]			[1,3,5]			Wrong
 3			[1, 2, 3, 4, 5, 6]			[1,2,3,4,5,6]			Wrong
-4			Who was the youngest U.S. president? 			Correct. He became president at the age of 42			Wrong
-5			Incorrect. He became president			when President McKinley was assassinated.			Wrong
-6			he was the youngest person elected president.			Sophomore			Wrong
-7			Enter your year: 			16			Wrong
-8			Freshman			Gehrig  0.338			Wrong
-9			6			Ruth    0.342			Wrong
-10			Gehrig     0.338			Williams    0.344			Wrong
-11			-			Ruth       0.342			Wrong
-12			-			Williams   0.344			Wrong
+4			Incorrect. He became president			Correct. He became president at the age of 42			Wrong
+5			he was the youngest person elected president.			when President McKinley was assassinated.			Wrong
+6			Freshman			Sophomore			Wrong
+7			6			16			Wrong
+8			Gehrig     0.338			Gehrig  0.338			Wrong
+9			Ruth       0.342			Ruth    0.342			Wrong
+10			Williams   0.344			Williams    0.344			Wrong
