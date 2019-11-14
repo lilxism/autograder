@@ -22,7 +22,7 @@ public class TestUnzipper {
 
 
         //This is the file for printing output
-        File file = new File("./compare.txt");
+        File file = new File("./WorkFile/compare.txt");
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
 
@@ -103,15 +103,17 @@ public class TestUnzipper {
                 writer.write(str+"\n");
             }
             writer.close();
-
+            System.out.println("Saved output to ./WorkFile/compare.txt");
             System.out.println("Comparing output: ");
             //compare the output with given answers
-            compareOutput("./compare.txt", "./answer_lab4.txt");
+            compareOutput("./WorkFile/compare.txt", test.getSetting("CHECK_FILE"));
+            System.out.println("Saved compared output to ./WorkFile/compared.txt");
 
             String outfile= removeExtension(fileNames[fileCount]) + "_check.txt";
-            ArrayList<String> strs=new ArrayList<String>();
 
-            /*Checking format for file*/
+           // ArrayList<String> strs=new ArrayList<String>();
+/*
+            //Checking format for file
             if(test.getSetting("CHECK_FORMAT").compareTo("TRUE")==0){
                 System.out.println("    Checking format");
                 strs=formatchecker(filePath);
@@ -120,7 +122,7 @@ public class TestUnzipper {
 
             }
 
-            /*Checking activity for file*/
+            //Checking activity for file
             if(test.getSetting("CHECK_ACTIVITY").compareTo("TRUE")==0){
                 System.out.println("    Checking activity");
                 int expected=5; //number of expected activities
@@ -133,7 +135,7 @@ public class TestUnzipper {
 
             }
 
-            /*Checking answers for file*/
+            //Checking answers for file
             if(test.getSetting("CHECK_COMMENT_ANSWERS").compareTo("TRUE")==0){
                 System.out.println("    Saving answers to file");
                 strs=answerchecker(filePath);
@@ -141,7 +143,10 @@ public class TestUnzipper {
             }
             System.out.println();
             fileCount++;
+            */
         }
+
         System.exit(0);
     }
+
 }

@@ -1,6 +1,3 @@
-//Output can be of many types (graph...)
-//Instructor's answer are given at each line for each question
-//After comparing each output??
 package compareoutput;
 import java.io.*;
 import java.util.Scanner;
@@ -14,54 +11,50 @@ public class compareOutput {
 			String check = "";
 			String studentAnswer,instructorAnswer;
 			int count = 0; //line
-			int correct = 0, wrong=0, noAnswer=0;
-			FileWriter fileWriter = new FileWriter("src\\main\\java\\compareoutput\\compared.txt");
+			FileWriter fileWriter = new FileWriter("./WorkFile/compared.txt");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
-			printWriter.printf("%-5s%-50s%-50s%-20s\n", "No","Student's answer","Instructor's answer","Comment");
+			printWriter.printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\n", "No","Student's answer","Instructor's answer","Comment");
 
 			//read the file
 			while(sc1.hasNext() && sc2.hasNext()) {
-				studentAnswer = sc1.nextLine();
+			    do {
+                    studentAnswer = sc1.nextLine();
+                } while(studentAnswer.equals("") || studentAnswer.substring(0,1).equals(">")); //read in the next line if the line is empty - some students might add "\n" after each question
+
 				instructorAnswer = sc2.nextLine();
 
 				if(studentAnswer.equals(instructorAnswer)) {
 					check = "Correct";
-					correct++;
-
 				} else {
 					check = "Wrong";
-					wrong++;
 				}
 
 				++count;
 				if(studentAnswer.length()>50) {
-					studentAnswer = studentAnswer.substring(0,40);
+					studentAnswer = studentAnswer.substring(0,30);
 				}
 				if(instructorAnswer.length()>50) {
-					instructorAnswer = instructorAnswer.substring(0,40);
+					instructorAnswer = instructorAnswer.substring(0,0);
 				}
-
-				printWriter.printf("%-5d%-50s%-50s%-20s\n",count,studentAnswer,instructorAnswer,check);
+				printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,studentAnswer,instructorAnswer,check);
 			}
-
 
 			//the student did not answer all the questions
 			if(sc2.hasNext()) {
 				while(sc2.hasNext()) {
 					++count;
-					noAnswer++;
 					instructorAnswer = sc2.nextLine();
-					printWriter.printf("%-5d%-50s%-50s%-20s\n",count,"",instructorAnswer,"No answer");
+					printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"-",instructorAnswer,"Wrong");
 				}
-			}
-
-			printWriter.println("\nCorrect: " + correct + "\nWrong: "+ wrong);
-			if(noAnswer!=0) {
-				printWriter.println("No answer: "+ noAnswer);
-			}
+			} else if(sc1.hasNext()) {
+                while(sc1.hasNext()) {
+                    ++count;
+                    instructorAnswer = sc1.nextLine();
+                    printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"-",instructorAnswer,"Wrong");
+                }
+            }
 			printWriter.close();
-
 	}
 
 	public static void main(String[] args) throws IOException {
