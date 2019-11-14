@@ -89,25 +89,18 @@ public class TestUnzipper {
                 continue;
             }
 
-            System.out.println("Python file '" + fileNames[fileCount] + "':");
+            System.out.println("Python file: '" + fileNames[fileCount] + "':");
 
             String str=""; //for reading line by line
-            String command="";
-            if(test.getSetting("CHECK_INPUT").compareTo("TRUE")==0) {
-                String inputFile = test.getSetting("CHECK_INPUT_FILE");
-                System.out.println("Input File: " + inputFile);
-                command = "py " + filePath + " < " + inputFile;
-            }else{
-                command = "py " + filePath;
-            }
+            String command="py " + filePath;
 
-            System.out.println("Executing: "+command);
+            System.out.println("Executing: "+ command);
             Process process = Runtime.getRuntime().exec(command);
-            System.out.println("Executed: "+command);
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            while((str = in.readLine()) != null) {
-                System.out.println(str);
-                writer.write(str + "\n");
+
+            // Write results of script to console
+            while ((str = in.readLine()) != null) {
+                writer.write(str+"\n");
             }
             writer.close();
 
