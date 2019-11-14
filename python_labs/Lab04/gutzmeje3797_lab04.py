@@ -4,7 +4,7 @@ This version reads user input from a file
 
 # '''
 def main():
-	f = open("file.txt", "r")
+	f = open("python_labs/Lab04/gutzmeje3797_lab04_input.txt", "r")
 	text = f.read()
 	inputList = text.split(",")
 

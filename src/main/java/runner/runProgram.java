@@ -10,43 +10,19 @@ public class runProgram {
         String str;
         File file = new File("./compare.txt");
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-        //System.out.println("Please enter text file with user input for program");
-        //String txtFile = scanner.next();
-        //if(txtFile == null) {
-        //    System.out.println("Please enter a valid text file");
-        //}
         System.out.print("Enter path to python script to be executed: ");
         String python = scanner.next();
-        System.out.print("Does this script require user input? (y/n) ");
-        String haveInput = scanner.next();
 
-        // Read a file with contents to be piped into the python script
-        if (haveInput.toLowerCase().startsWith("y")) {
-            System.out.print("Enter answer file for script: ");
-            String answers = scanner.next();
-            String command = "python " + python + " < " + answers;
-            System.out.println(command);
-            // Run the python script
-            Process process = Runtime.getRuntime().exec(command);
-            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            // Write results of script to console
-            while((str = in.readLine()) != null) {
-                System.out.println(str);
-                writer.write(str);
-            }
-            writer.close();
-        } else {
-            // Run the script without piping anything in
-            String command = "python " + python;
-            System.out.println(command);
-            Process process = Runtime.getRuntime().exec(command);
-            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            // Write results of script to console
-            while ((str = in.readLine()) != null) {
-                System.out.println(str);
-                writer.write(str + "\n");
-            }
-            writer.close();
+        // Run the script without piping anything in
+        String command = "python " + python;
+        System.out.println(command);
+        Process process = Runtime.getRuntime().exec(command);
+        BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        // Write results of script to console
+        while ((str = in.readLine()) != null) {
+            System.out.println(str);
+            writer.write(str+"\n");
         }
+        writer.close();
     }
 }
