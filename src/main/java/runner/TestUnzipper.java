@@ -104,8 +104,9 @@ public class TestUnzipper {
             }
             writer.close();
 
+            System.out.println("Comparing output: ");
             //compare the output with given answers
-            compareOutput("./compare.txt", "./answer_lab6.txt");
+            compareOutput("./compare.txt", "./answer_lab4.txt");
 
             String outfile= removeExtension(fileNames[fileCount]) + "_check.txt";
             ArrayList<String> strs=new ArrayList<String>();

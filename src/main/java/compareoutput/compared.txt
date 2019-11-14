@@ -1,20 +1,29 @@
 No   Student's answer                                  Instructor's answer                               Comment             
-1    [1, 2, 3, 4, 5]                                   True                                              Wrong               
-2                                                      False                                             Wrong               
-3    [1, 3, 5]                                         1,2,3,4,5,6,7,8,9                                 Wrong               
-4                                                      1,2,3,4,5                                         Wrong               
-5    [1, 2, 3, 4, 5, 6]                                1                                                 Wrong               
-6                                                      n is less than 1                                  Wrong               
-7    Who was the youngest U.S. president?              hellohellohello                                   Wrong               
-8    > JFK                                             okay                                              Wrong               
-9    Incorrect. He became president at age of          catscatscatscats                                  Wrong               
-10   he was the youngest person elected president.     8                                                 Wrong               
-11                                                     -1                                                Wrong               
-12   Enter your year:                                  0                                                 Wrong               
-13   > 1                                               -1                                                Wrong               
-14   Freshman                                          384                                               Wrong               
-15                                                     3840                                              Wrong               
-16   6                                                 185794560                                         Wrong               
+1    [1, 2, 3, 4, 5]                                   {1,2,3,4,5}                                       Wrong               
+2                                                      {1,3,5}                                           Wrong               
+3    [1, 3, 5]                                         {1,2,3,4,5,6}                                     Wrong               
+4                                                      Correct. He became president at the age of 42     Wrong               
+5    [1, 2, 3, 4, 5, 6]                                when President McKinley was assassinated.         Wrong               
+6                                                      Correct.  He became president at the age of 42    Wrong               
+7    Who was the youngest U.S. president?              when President McKinley was assassinated.         Wrong               
+8    > JFK                                             Correct.  He became president at the age of 42    Wrong               
+9    Incorrect. He became president at age of          when President McKinley was assassinated.         Wrong               
+10   he was the youngest person elected president.     Incorrect. He became president at age of          Wrong               
+11                                                     he was the youngest person elected president.     Wrong               
+12   Enter your year:                                  Incorrect. He became president at age of          Wrong               
+13   > 1                                               he was the youngest person elected president.     Wrong               
+14   Freshman                                          Incorrect. He became president at age of          Wrong               
+15                                                     he was the youngest person elected president.     Wrong               
+16   6                                                 Nope!                                             Wrong               
+17                                                     Freshman                                          Wrong               
+18   Gehrig     0.338                                  Sophomore                                         Wrong               
+19   Ruth       0.342                                  Junior                                            Wrong               
+20   Williams   0.344                                  Senior                                            Wrong               
+21                                                     16                                                No answer           
+22                                                     Gehrig 0.338                                      No answer           
+23                                                     Ruth 0.342                                        No answer           
+24                                                     Williams 0.344                                    No answer           
 
 Correct: 0
-Wrong: 16
+Wrong: 20
+No answer: 4
