@@ -20,10 +20,6 @@ No   Student's answer                                  Instructor's answer      
 19   Junior                                            Junior                                            Correct             
 20   Senior                                            Senior                                            Correct             
 21   161                                               16                                                Wrong               
-22                                                     Gehrig 0.338                                      No answer           
-23                                                     Ruth 0.342                                        No answer           
-24                                                     Williams 0.344                                    No answer           
-
-Correct: 19
-Wrong: 2
-No answer: 3
+22                                                     Gehrig 0.338                                      Wrong               
+23                                                     Ruth 0.342                                        Wrong               
+24                                                     Williams 0.344                                    Wrong               

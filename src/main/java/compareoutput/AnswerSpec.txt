@@ -1,0 +1,18 @@
+Lab 04:
+
+For Activity 0:
+- Lists should be output using curly brace '{'.
+
+
+Lab 05:
+- Graphs
+
+
+Lab 06:
+-
+
+
+Lab 07:
+- Output is based on randomness.
+- The program will not verify the output.
+
