@@ -6,8 +6,8 @@ No			Student's answer			Instructor's answer			Comment
 5			Incorrect. He became president			when President McKinley was assassinated.			Wrong
 6			he was the youngest person elected president.			Sophomore			Wrong
 7			Enter your year: 			16			Wrong
-8			Freshman			Gehrig 0.338			Wrong
-9			6			Ruth 0.342			Wrong
-10			Gehrig     0.338			Williams 0.344			Wrong
+8			Freshman			Gehrig  0.338			Wrong
+9			6			Ruth    0.342			Wrong
+10			Gehrig     0.338			Williams    0.344			Wrong
 11			-			Ruth       0.342			Wrong
 12			-			Williams   0.344			Wrong

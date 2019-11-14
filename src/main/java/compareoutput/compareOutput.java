@@ -20,7 +20,7 @@ public class compareOutput {
 			while(sc1.hasNext() && sc2.hasNext()) {
 			    do {
                     studentAnswer = sc1.nextLine();
-                } while(studentAnswer.equals("") || studentAnswer.substring(0,1).equals(">")); //read in the next line if the line is empty - some students might add "\n" after each question
+                } while(studentAnswer.equals("") || studentAnswer.substring(0,1).equals(">") || studentAnswer.substring(studentAnswer.length()-1).equals(":") || studentAnswer.substring(studentAnswer.length()-1).equals("?")); //read in the next line if the line is empty - some students might add "\n" after each question
 
 				instructorAnswer = sc2.nextLine();
 
