@@ -4,7 +4,7 @@ import java.io.*;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
-
+/*
 public class runProgram {
     public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -46,3 +46,4 @@ public class runProgram {
         }
     }
 }
+*/

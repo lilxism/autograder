@@ -1,20 +1,21 @@
 No   Student's answer                                  Instructor's answer                               Comment             
-1    True                                              True                                              Correct             
-2    False                                             False                                             Correct             
-3                                                      1,2,3,4,5,6,7,8,9                                 Wrong               
-4    1,2,3,4,5,6,7,8,9                                 1,2,3,4,5                                         Wrong               
-5    1,2,3,4,5                                         1                                                 Wrong               
-6    1                                                 n is less than 1                                  Wrong               
-7    n is less than 1                                  hellohellohello                                   Wrong               
-8                                                      okay                                              Wrong               
-9    hellohellohello                                   catscatscatscats                                  Wrong               
-10   okay                                              8                                                 Wrong               
-11   catscatscatscats                                  -1                                                Wrong               
-12                                                     0                                                 Wrong               
-13   8                                                 -1                                                Wrong               
-14   -1                                                384                                               Wrong               
-15   0                                                 3840                                              Wrong               
-16   -1                                                185794560                                         Wrong               
+1                                                      True                                              No answer           
+2                                                      False                                             No answer           
+3                                                      1,2,3,4,5,6,7,8,9                                 No answer           
+4                                                      1,2,3,4,5                                         No answer           
+5                                                      1                                                 No answer           
+6                                                      n is less than 1                                  No answer           
+7                                                      hellohellohello                                   No answer           
+8                                                      okay                                              No answer           
+9                                                      catscatscatscats                                  No answer           
+10                                                     8                                                 No answer           
+11                                                     -1                                                No answer           
+12                                                     0                                                 No answer           
+13                                                     -1                                                No answer           
+14                                                     384                                               No answer           
+15                                                     3840                                              No answer           
+16                                                     185794560                                         No answer           
 
-Correct: 2
-Wrong: 14
+Correct: 0
+Wrong: 0
+No answer: 16
