@@ -20,7 +20,7 @@ public class compareOutput {
 			while(sc1.hasNext() && sc2.hasNext()) {
 			    do {
                     studentAnswer = sc1.nextLine();
-                } while(studentAnswer.equals("")); //read in the next line if the line is empty - some students might add "\n" after each question
+                } while(studentAnswer.equals("") || studentAnswer.substring(0,1).equals(">")); //read in the next line if the line is empty - some students might add "\n" after each question
 
 				instructorAnswer = sc2.nextLine();
 
@@ -37,10 +37,8 @@ public class compareOutput {
 				if(instructorAnswer.length()>50) {
 					instructorAnswer = instructorAnswer.substring(0,40);
 				}
-
 				printWriter.printf("%-5d%-50s%-50s%-20s\n",count,studentAnswer,instructorAnswer,check);
 			}
-
 
 			//the student did not answer all the questions
 			if(sc2.hasNext()) {
@@ -57,7 +55,6 @@ public class compareOutput {
                 }
             }
 			printWriter.close();
-
 	}
 
 	public static void main(String[] args) throws IOException {

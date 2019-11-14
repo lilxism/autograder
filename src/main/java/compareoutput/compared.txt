@@ -4,22 +4,9 @@ No   Student's answer                                  Instructor's answer      
 3    {1,2,3,4,5,6}                                     {1,2,3,4,5,6}                                     Correct             
 4    Correct. He became president at the age of 42     Correct. He became president at the age of 42     Correct             
 5    when President McKinley was assassinated.         when President McKinley was assassinated.         Correct             
-6    Correct.  He became president at the age of 42    Correct.  He became president at the age of 42    Correct             
-7    when President McKinley was assassinated.         when President McKinley was assassinated.         Correct             
-8    Correct.  He became president at the age of 42    Correct.  He became president at the age of 42    Correct             
-9    when President McKinley was assassinated.         when President McKinley was assassinated.         Correct             
-10   Incorrect. He became president at age of          Incorrect. He became president at age of          Correct             
-11   he was the youngest person elected president.     he was the youngest person elected president.     Correct             
-12   Incorrect. He became president at age of          Incorrect. He became president at age of          Correct             
-13   he was the youngest person elected president.     he was the youngest person elected president.     Correct             
-14   Incorrect. He became president at age of          Incorrect. He became president at age of          Correct             
-15   he was the youngest person elected president.     he was the youngest person elected president.     Correct             
-16   Yes                                               Nope!                                             Wrong               
-17   Freshman                                          Freshman                                          Correct             
-18   Sophomore                                         Sophomore                                         Correct             
-19   Junior                                            Junior                                            Correct             
-20   Senior                                            Senior                                            Correct             
-21   161                                               16                                                Wrong               
-22                                                     Gehrig 0.338                                      Wrong               
-23                                                     Ruth 0.342                                        Wrong               
-24                                                     Williams 0.344                                    Wrong               
+6    Yes                                               Nope!                                             Wrong               
+7    Sophomore                                         Sophomore                                         Correct             
+8    161                                               16                                                Wrong               
+9                                                      Gehrig 0.338                                      Wrong               
+10                                                     Ruth 0.342                                        Wrong               
+11                                                     Williams 0.344                                    Wrong               
