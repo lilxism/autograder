@@ -45,13 +45,13 @@ public class compareOutput {
 				while(sc2.hasNext()) {
 					++count;
 					instructorAnswer = sc2.nextLine();
-					printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"",instructorAnswer,"Wrong");
+					printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"-",instructorAnswer,"Wrong");
 				}
 			} else if(sc1.hasNext()) {
                 while(sc1.hasNext()) {
                     ++count;
                     instructorAnswer = sc1.nextLine();
-                    printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"",instructorAnswer,"Wrong");
+                    printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"-",instructorAnswer,"Wrong");
                 }
             }
 			printWriter.close();
