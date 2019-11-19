@@ -9,6 +9,8 @@ import configsettings.*;
 
 public class Checker {
 
+    // Helper class used to store regex of syntax regex of potential issues
+    // and description of each problem
     private static class SyntaxSpec {
         String regex;
         String name;
@@ -18,9 +20,10 @@ public class Checker {
         }
     }
 
-
+    // Create ArrayList with a description for each issue that matches a spec
     public static ArrayList<String> formatchecker(String infile) {
         ArrayList<String> strs=new ArrayList<>();
+        // Define syntax specs to check for and problem descriptions
         List<SyntaxSpec> specs = Arrays.asList(
                 new SyntaxSpec("def\\s+[a-zA-Z_-]*[A-Z-]+[a-zA-Z_-]*", "Improper function name"),
                 new SyntaxSpec("(?:==|!=)\\s*(?:True|False)", "Redundant comparison"), // (ex. == True)
@@ -32,7 +35,9 @@ public class Checker {
             List<Integer> matches = new ArrayList<>();
             for (int i = 0; i < lines.size(); i++) {
                 for (SyntaxSpec spec : specs) {
+                    // If the line has the given issue
                     if (lines.get(i).matches(spec.regex)) {
+                        // Add the description to the output ArrayList
                         strs.add("Line " + i + ": " + spec.name);
                     }
                 }
@@ -43,21 +48,23 @@ public class Checker {
         return strs;
     }
 
-    public static  ArrayList<String> answerchecker(String infile) {
-        ArrayList<String> strs =new ArrayList<>();
-        ArrayList<String> buf = new ArrayList<>();
+    // Get a list of answer comments from the given file
+    public static ArrayList<String> answerchecker(String infile) {
+        ArrayList<String> strs = new ArrayList<>();
         String line;
-        String com="";
+        StringBuilder com = new StringBuilder();
         try {
+            // Read the file contents into a string
             FileReader fileReader = new FileReader(infile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while((line=bufferedReader.readLine())!=null) {
-                com+="\n"+line;
+            while((line = bufferedReader.readLine()) != null) {
+                com.append("\n").append(line);
             }
-            String[] token = com.split("\"\"\"");
-            buf.addAll(Arrays.asList(token));
-            for(int i=1;i<buf.size();i+=2){
-                strs.add(buf.get(i));
+            // Split by triple quotes (which denote block comments) and get
+            // every second section (the parts within quotes)
+            String[] token = com.toString().split("\"\"\"");
+            for(int i = 1; i < token.length; i += 2){
+                strs.add(token[i]);
             }
             bufferedReader.close();
         }
@@ -67,41 +74,37 @@ public class Checker {
         return strs;
     }
 
+    // Helper function to write a list of strings to a file
     public static void writeToFile(ArrayList<String> strs, String outfile) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(outfile, true));
-            for(int i=0;i<strs.size();i++) {
-                writer.write(strs.get(i));
+            for (String str : strs) {
+                writer.write(str);
             }
             writer.close();
-        }catch(IOException ex){
+        } catch(IOException ex) {
             ex.printStackTrace();
         }
     }
 
-
+    // Checks to see if the expected number of activities is present in the file
     public static boolean activitychecker(String infile, int expected) {
-        boolean checked=false;
         int countAct=0;
-        SyntaxSpec spec = new SyntaxSpec("^#.+", "Activity name");
+        SyntaxSpec spec = new SyntaxSpec("^# ?activity.*", "Activity name");
         List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(infile));
             List<Integer> matches = new ArrayList<>();
-            for (int i = 0; i < lines.size(); i++) {
-                if (lines.get(i).matches(spec.regex)) {
-                    if (lines.get(i).toLowerCase().startsWith("#activity") || lines.get(i).startsWith("# activity")) {
-                        countAct += 1;
-                    }
+            // Count lines that start with "#activity" or "# activity"
+            for (String line : lines) {
+                if (line.toLowerCase().matches(spec.regex)) {
+                    countAct += 1;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(countAct==expected){
-            checked=true;
-        }
-        return checked;
+        return (countAct == expected);
     }
 /*
     public static void main(String[]args){

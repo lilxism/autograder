@@ -6,6 +6,7 @@ import java.util.Properties;
 public class ConfigSettings {
     private Properties settings = new Properties();
 
+    // Create config settings object from file path
     public ConfigSettings(String fileName) {
         try {
             settings.load(new FileReader(fileName));
@@ -15,10 +16,12 @@ public class ConfigSettings {
         }
     }
 
+    // Get setting paired to the key
     public String getSetting(String key) {
         return getSetting(key, null);
     }
 
+    // Get setting paired to the key or defaultValue if none exists
     public String getSetting(String key, String defaultValue) {
         return settings.getProperty(key, defaultValue);
     }
