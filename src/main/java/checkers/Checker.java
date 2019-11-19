@@ -90,7 +90,8 @@ public class Checker {
     // Checks to see if the expected number of activities is present in the file
     public static boolean activitychecker(String infile, int expected) {
         int countAct=0;
-        SyntaxSpec spec = new SyntaxSpec("^# ?activity.*", "Activity name");
+        boolean acheck=false;
+        SyntaxSpec spec = new SyntaxSpec(".*# ?activity.*", "Activity name");
         List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(infile));
@@ -105,7 +106,11 @@ public class Checker {
             e.printStackTrace();
         }
         System.out.println("    Number of activities: " + countAct);
-        return (countAct == expected);
+
+        if(countAct>=expected){
+            acheck=true;
+        }
+        return acheck;
     }
 /*
     public static void main(String[]args){

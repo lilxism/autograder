@@ -63,7 +63,7 @@ def isYoungest(pres):
 		print("when President McKinley was assassinated.")
 
 	elif pres in possibleAns:
-		print("Incorrect.  He became president at age of 43. However,")
+		print("Incorrect. He became president at age of 43. However,")
 		print("he was the youngest person elected president.")
 
 	else:

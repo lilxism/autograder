@@ -1,7 +1,6 @@
 package resultAnalysis;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,26 +36,30 @@ public class resultAnalysis {
 //
 //    }
 
-    public static void runAnalysis(List<String> list, Writer writer, List<Integer> result) throws IOException {
+    public static List<Integer> runAnalysis(List<String> list, Writer writer, List<Integer> result) throws IOException {
+        File current = new File(list.get(0));
+        //String username = current.getName().split("_")[0];
         //create list to store the amount of wrong answers per question
-        numQ = numQuestions(new File(list.get(0)));
+        numQ = numQuestions(current);
         result = new ArrayList<>(Collections.nCopies(numQ, 0));
 
         writer.write("INDIVIDUAL SCORES\n");
         //run through all files analyzing each one and putting resulting into the result list
         for (String s : list) {
+            File curr= new File(s);
+            String username = curr.getName().split("_")[0];
             try {
-                splitResult(s, writer, result);
+                splitResult(s, writer, result, username);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
 
         writer.write("\n");
-
+        return result;
     }
 
-    public static void splitResult(String path, Writer writer, List<Integer> result) throws IOException {
+    public static List<Integer> splitResult(String path, Writer writer, List<Integer> result, String username) throws IOException {
         //increment used to find class total aka amount of assignments graded
         amountCalled++;
         int amountWrong = 0;
@@ -74,11 +77,10 @@ public class resultAnalysis {
                 result.set(question, result.get(question) +1);
             }
         }
-        String name = "STUDENT";
         String grade = getGrade(amountWrong, result);
 
-        writer.write(name + ": " + grade + "\n");
-
+        writer.write(username + ": " + grade + "\n");
+        return result;
     }
 
 
