@@ -1,5 +1,5 @@
 /.idea/
 *.iml
 /.idea/*.xml
-/target/
 /WorkFile/
+/target/

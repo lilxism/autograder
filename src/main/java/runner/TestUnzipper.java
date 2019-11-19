@@ -23,9 +23,10 @@ public class TestUnzipper {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String STUDENT_OUTPUT =  "./WorkFile/compare.txt";
-    public static final String COMPARED_RESULT = "./WorkFile/compared.txt";
+    public static final String WORKFILE_FOLDER=  "./WorkFile/";
     private static final String CHECK_SUFFIX = "_check.txt";
+    private static final String OUTPUT_SUFFIX = "_compare.txt";
+    private static final String RESULTS_SUFFIX = "_compared.txt";
 
     public static void main(String[] args) throws IOException {
         //user should input settings.cfg
@@ -97,6 +98,7 @@ public class TestUnzipper {
             }
 
             System.out.println("Python file '" + fileNames[fileCount] + "':");
+            String scriptPrefix = removeExtension(fileNames[fileCount]);
 
             /*Run the student's script to produce answers*/
             String str=""; //for reading line by line
@@ -105,8 +107,9 @@ public class TestUnzipper {
             System.out.println("    Executing: "+ command);
             Process process = Runtime.getRuntime().exec(command);
 
+            String studentOutputFilename = WORKFILE_FOLDER + scriptPrefix + OUTPUT_SUFFIX;
             //This is the file for printing output
-            File file = new File("./WorkFile/compare.txt");
+            File file = new File(studentOutputFilename);
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
@@ -115,19 +118,20 @@ public class TestUnzipper {
                 writer.write(str+"\n");
             }
             writer.close();
-            System.out.println(ANSI_GREEN + "    Saved student output to " + STUDENT_OUTPUT + ANSI_RESET);
+            System.out.println(ANSI_GREEN + "    Saved student output to " + studentOutputFilename + ANSI_RESET);
 
-            if(new File(STUDENT_OUTPUT).length() != 0) {
+            String comparedResultsFilename = WORKFILE_FOLDER + scriptPrefix + RESULTS_SUFFIX;
+            if(new File(studentOutputFilename).length() != 0) {
                 System.out.println("    Comparing output: ");
                 //compare the output with given answers
-                compareOutput(STUDENT_OUTPUT, test.getSetting("CHECK_FILE"));
-                System.out.println(ANSI_GREEN + "    Saved compared output to " + COMPARED_RESULT + ANSI_RESET);
+                compareOutput(studentOutputFilename, test.getSetting("CHECK_FILE"), comparedResultsFilename);
+                System.out.println(ANSI_GREEN + "    Saved compared output to " + comparedResultsFilename + ANSI_RESET);
             }
             else{
-                System.out.println(ANSI_RED + "    'compare.txt' was empty. No comparison was done." + ANSI_RESET);
+                System.out.println(ANSI_RED + "    " + studentOutputFilename + " was empty. No comparison was done." + ANSI_RESET);
             }
 
-            String outfile= removeExtension(fileNames[fileCount]) + CHECK_SUFFIX;
+            String outfile= WORKFILE_FOLDER + scriptPrefix + CHECK_SUFFIX;
             resetFile(new File(outfile));
             ArrayList<String> strs;
 
@@ -145,6 +149,7 @@ public class TestUnzipper {
                 System.out.println("    Checking activity");
                 int expected=5; //number of expected activities
                 boolean ac= activitychecker(filePath,expected) ;
+                //System.out.println("    Filepath: " + filePath);
                 if(ac){
                     System.out.println(ANSI_GREEN + "    Number of activity is same as expected." + ANSI_RESET);
                 }else{

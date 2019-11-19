@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 
 public class compareOutput {
-	public static void compareOutput(String studentFile, String answer) throws IOException {
+	public static void compareOutput(String studentFile, String answer, String outfile) throws IOException {
 
 			Scanner sc1 = new Scanner(new File(studentFile));
 			Scanner sc2 = new Scanner(new File(answer));
@@ -14,7 +14,7 @@ public class compareOutput {
 			String check = "";
 			String studentAnswer,instructorAnswer;
 			int count = 0; //line
-			FileWriter fileWriter = new FileWriter("./WorkFile/compared.txt");
+			FileWriter fileWriter = new FileWriter(outfile);
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
 			printWriter.printf("%s\t\t\t%s\t\t\t%s\n", "No","Student's answer","Comment");
@@ -59,6 +59,6 @@ public class compareOutput {
 		String student = "src\\main\\java\\compareoutput\\student_lab4.txt";
 		String instructor = "src\\main\\java\\compareoutput\\answer_lab4.txt";
 
-		compareOutput(student, instructor);
+		compareOutput(student, instructor, "./WorkFile/compared.txt");
 	}
 }
