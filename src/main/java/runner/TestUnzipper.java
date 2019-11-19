@@ -155,13 +155,13 @@ public class TestUnzipper {
             //Checking script activity
             if(test.getSetting("CHECK_ACTIVITY").compareTo("TRUE")==0){
                 System.out.println("    Checking activity");
-                int expected=5; //number of expected activities
+                int expected=Integer.parseInt(test.getSetting("CHECK_ACTIVITY_NUM"));
                 boolean ac= activitychecker(filePath,expected) ;
                 //System.out.println("    Filepath: " + filePath);
                 if(ac){
-                    System.out.println(ANSI_GREEN + "    Number of activity is same as expected." + ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "    Number of activity is same or bigger than expected." + ANSI_RESET);
                 }else{
-                    System.out.println(ANSI_RED + "    Number of activity is not same as expected." + ANSI_RESET);
+                    System.out.println(ANSI_RED + "    Number of activity is smaller than expected." + ANSI_RESET);
                 }
 
             }
@@ -182,10 +182,11 @@ public class TestUnzipper {
             fileCount++;
         }
 
+        //int numQ = 0;
         try {
 
             Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(WORKFILE_FOLDER + "!AutograderResults.txt"), StandardCharsets.UTF_8));
-            runAnalysis(files, writer, result);
+            result = runAnalysis(files, writer, result);
             displayResults(writer, result);
             writer.close();
         } catch (IOException e) {
