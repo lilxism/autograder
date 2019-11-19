@@ -17,7 +17,7 @@ public class compareOutput {
 			FileWriter fileWriter = new FileWriter(outfile);
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
-			printWriter.printf("%s\t\t\t%s\t\t\t%s\n", "No","Student's answer","Comment");
+			printWriter.printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\n", "No","Student's answer","Instructor's Answer","Comment");
 
 			//read the file
 			while(sc1.hasNext() && sc2.hasNext()) {
@@ -35,7 +35,7 @@ public class compareOutput {
 				}
 
 				++count;
-				printWriter.printf("%d\t\t\t%s\t\t\t%s\n",count,studentAnswer,check);
+				printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,studentAnswer,instructorAnswer,check);
 			}
 
 			//the student did not answer all the questions
@@ -43,13 +43,13 @@ public class compareOutput {
 				while(sc2.hasNext()) {
 					++count;
 					instructorAnswer = sc2.nextLine();
-					printWriter.printf("%d\t\t\t%s\t\t\t%s\n",count,"-","Wrong");
+					printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,"-",instructorAnswer,"Wrong");
 				}
 			} else if(sc1.hasNext()) {
                 while(sc1.hasNext()) {
                     ++count;
                     instructorAnswer = sc1.nextLine();
-                    printWriter.printf("%d\t\t\t%s\t\t\t%s\n",count,"-","Wrong");
+                    printWriter.printf("%d\t\t\t%s\t\t\t%s\t\t\t%s\n",count,instructorAnswer,"-","Wrong");
                 }
             }
 			printWriter.close();
