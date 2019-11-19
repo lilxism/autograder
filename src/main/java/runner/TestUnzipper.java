@@ -4,12 +4,16 @@ import configsettings.ConfigSettings;
 import javax.swing.*;
 //import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static checkers.Checker.*;
 import static compareoutput.compareOutput.compareOutput;
 import static javax.swing.JFileChooser.FILES_AND_DIRECTORIES;
+import static resultAnalysis.resultAnalysis.displayResults;
+import static resultAnalysis.resultAnalysis.runAnalysis;
 import static ziptools.FolderUnzipper.*;
 
 public class TestUnzipper {
@@ -24,11 +28,12 @@ public class TestUnzipper {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String WORKFILE_FOLDER=  "./WorkFile/";
-    private static final String CHECK_SUFFIX = "_check.txt";
-    private static final String OUTPUT_SUFFIX = "_compare.txt";
-    private static final String RESULTS_SUFFIX = "_compared.txt";
+    public static final String CHECK_SUFFIX = "_check.txt";
+    public static final String OUTPUT_SUFFIX = "_compare.txt";
+    public static final String RESULTS_SUFFIX = "_compared.txt";
 
     public static void main(String[] args) throws IOException {
+        //files = new ArrayList<>();
         //user should input settings.cfg
         String cfgFile="settings.cfg";
         ConfigSettings test = new ConfigSettings(cfgFile);
@@ -85,6 +90,8 @@ public class TestUnzipper {
         }
 
         int fileCount = 0;
+        ArrayList<String> files = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
         System.out.println();
         /*Loop through the file paths, checking each file*/
@@ -126,6 +133,7 @@ public class TestUnzipper {
                 //compare the output with given answers
                 compareOutput(studentOutputFilename, test.getSetting("CHECK_FILE"), comparedResultsFilename);
                 System.out.println(ANSI_GREEN + "    Saved compared output to " + comparedResultsFilename + ANSI_RESET);
+                files.add(comparedResultsFilename);
             }
             else{
                 System.out.println(ANSI_RED + "    " + studentOutputFilename + " was empty. No comparison was done." + ANSI_RESET);
@@ -172,6 +180,16 @@ public class TestUnzipper {
             }
             System.out.println();
             fileCount++;
+        }
+
+        try {
+
+            Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(WORKFILE_FOLDER + "!AutograderResults.txt"), StandardCharsets.UTF_8));
+            runAnalysis(files, writer, result);
+            displayResults(writer, result);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         System.exit(0);

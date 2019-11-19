@@ -9,35 +9,35 @@ import java.util.Collections;
 
 public class resultAnalysis {
 
-    private static List<Integer> result;
+//    private static List<Integer> result;
     private static int amountCalled = 0;
-    private static List<String> files;
+//    private static List<String> files;
     private static int numQ;
 
-    public static void main(String[] args){
+//    public static void main(String[] args){
+//
+//        //create list of all the files to analyze
+//        files = new ArrayList<>();
+//        String pathTo = "src/main/java/resultAnalysis/";
+//        files.add(pathTo + "test1.txt");
+//        files.add(pathTo + "test2.txt");
+//        files.add(pathTo + "test3.txt");
+//        files.add(pathTo + "test4.txt");
+//
+//        try {
+//
+//            Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("filename.txt"), StandardCharsets.UTF_8));
+//            runAnalysis(files, writer);
+//            displayResults(writer, result);
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
 
-        //create list of all the files to analyze
-        files = new ArrayList<>();
-        String pathTo = "src/main/java/resultAnalysis/";
-        files.add(pathTo + "test1.txt");
-        files.add(pathTo + "test2.txt");
-        files.add(pathTo + "test3.txt");
-        files.add(pathTo + "test4.txt");
-
-        try {
-
-            Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("filename.txt"), StandardCharsets.UTF_8));
-            runAnalysis(files, writer);
-            displayResults(result, writer);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    private static void runAnalysis(List<String> list, Writer writer) throws IOException {
+    public static void runAnalysis(List<String> list, Writer writer, List<Integer> result) throws IOException {
         //create list to store the amount of wrong answers per question
         numQ = numQuestions(new File(list.get(0)));
         result = new ArrayList<>(Collections.nCopies(numQ, 0));
@@ -46,7 +46,7 @@ public class resultAnalysis {
         //run through all files analyzing each one and putting resulting into the result list
         for (String s : list) {
             try {
-                splitResult(s, writer);
+                splitResult(s, writer, result);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -56,7 +56,7 @@ public class resultAnalysis {
 
     }
 
-    private static void splitResult(String path, Writer writer) throws IOException {
+    public static void splitResult(String path, Writer writer, List<Integer> result) throws IOException {
         //increment used to find class total aka amount of assignments graded
         amountCalled++;
         int amountWrong = 0;
@@ -75,27 +75,27 @@ public class resultAnalysis {
             }
         }
         String name = "STUDENT";
-        String grade = getGrade(amountWrong);
+        String grade = getGrade(amountWrong, result);
 
         writer.write(name + ": " + grade + "\n");
 
     }
 
 
-    private static String getGrade(int amountWrong){
+    public static String getGrade(int amountWrong, List<Integer> result){
         return (numQ - amountWrong) + "/" + numQ;
     }
 
-    private static void displayResults(List<Integer> results, Writer writer) throws IOException {
+    public static void displayResults(Writer writer, List<Integer> result) throws IOException {
 
             writer.write("CLASS RESULTS\n");
-            for (int i = 0; i < results.size(); i++) {
+            for (int i = 0; i < result.size(); i++) {
                 writer.write( result.get(i)  + " students got question " + i + " wrong. That is " + (result.get(i) * 100) / amountCalled + "% of the class\n");
             }
 
     }
 
-    private static int numQuestions(File file) throws IOException {
+    public static int numQuestions(File file) throws IOException {
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
         int lines = 0;
