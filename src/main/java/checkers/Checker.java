@@ -104,6 +104,7 @@ public class Checker {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("    Number of activities: " + countAct);
         return (countAct == expected);
     }
 /*

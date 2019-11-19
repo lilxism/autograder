@@ -1,12 +1,7 @@
 Lab 04:
 
 Activity 0:
-- Lists should be output using square brace '['.
-
-Activity 3:
-- The name and number should be separated by tab '\t'.
-- It only accepts number that has 3 decimal places.
-
+- Accept both curly braces ({}) and square braces ([])
 
 Lab 05:
 - Graphs
