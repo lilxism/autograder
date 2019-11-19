@@ -147,4 +147,8 @@ public class FolderUnzipper {
 
         return filename.substring(0, extensionIndex);
     }
+
+    public static void resetFile(File file){
+        file.delete();
+    }
 }
